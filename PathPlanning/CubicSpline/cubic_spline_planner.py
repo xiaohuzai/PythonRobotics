@@ -231,9 +231,9 @@ class CubicSpline2D:
     """
 
     def __init__(self, x, y):
-        self.s = self.__calc_s(x, y)
-        self.sx = CubicSpline1D(self.s, x)
-        self.sy = CubicSpline1D(self.s, y)
+        self.s = self.__calc_s(x, y) # 根据way points计算每个点的s
+        self.sx = CubicSpline1D(self.s, x) # 计算出x与s的三次样条关系
+        self.sy = CubicSpline1D(self.s, y) # 计算处y与s的三次样条关系
 
     def __calc_s(self, x, y):
         dx = np.diff(x)
